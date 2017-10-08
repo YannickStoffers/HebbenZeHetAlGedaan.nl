@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Hebben ze het al gedaan? - Resultaten{% endblock %}
+
+{% block content %}
+{% if results.count %}
+	<p>
+		Volgens onze database hebben {{ results.name1 | lower | title }} en {{ results.name2 | lower | title }} het zeker al gedaan!
+		Maar liefst {{ results.count }} perso{{ results.count | pluralize:"on,nen" }} hebben dit bevestigd.
+	</p>
+{% else %}
+	<p>
+		Dat weten we niet.
+	</p>
+{% endif %}
+{% endblock %}
+
