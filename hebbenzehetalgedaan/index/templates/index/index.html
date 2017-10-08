@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script type="text/javascript">
+	function process ()
+	{
+		var url = "http://127.0.0.1:8000/results/" + 
+			document.getElementById ("name1").value.trim ().replace (" ", "-") + 
+			"/" + 
+			document.getElementById ("name2").value.trim ().replace (" ", "-");
+			
+		location.href = url;
+		return false;
+	}
+</script>
+
+<form onSubmit="return process();">
+	<input name="naam1" type="text" maxlength="100" id="name1">
+	<input name="naam2" type="text" maxlength="100" id="name2">
+	<input type="submit">
+</form>
+
+{% endblock %}

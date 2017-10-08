@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Hebben ze het al gedaan? - Resultaten{% endblock %}
+
+{% block content %}
+{% if results.count %}
+	<p>
+		Volgens onze database hebben {{ results.name1 | lower | title }} en {{ results.name2 | lower | title }} het zeker al gedaan!
+		Maar liefst {{ results.count }} perso{{ results.count | pluralize:"on,nen" }} he{{ results.count | pluralize:"eft,bben" }} dit bevestigd.
+	</p>
+{% else %}
+	<p>
+		Dat weten we niet.
+	</p>
+{% endif %}
+
+<script type="text/javascript">
+	function process ()
+	{
+		var url = "http://127.0.0.1:8000/results/post/" + 
+			document.getElementById ("name1").value.trim ().replace (" ", "-") + 
+			"/" + 
+			document.getElementById ("name2").value.trim ().replace (" ", "-");
+			
+		location.href = url;
+		return false;
+	}
+</script>
+
+<form onSubmit="return process();">
+	<input name="naam1" type="text" maxlength="100" id="name1">
+	<input name="naam2" type="text" maxlength="100" id="name2">
+	<input type="submit">
+</form>
+
+<a href="http://127.0.0.1:8000">Terug naar home.</a>
+
+{% endblock %}
+
