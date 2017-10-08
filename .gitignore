@@ -102,4 +102,5 @@ ENV/
 
 # Database
 **sqlite3
+**migrations**
 
